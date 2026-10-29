@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>MOTION GRAPHIC — 천우태 포트폴리오</title>
+<meta name="description" content="2026 motion graphic work · 모션그래픽 릴">
+<meta name="theme-color" content="#000000">
+<meta property="og:title" content="MOTION GRAPHIC — 천우태">
+<meta property="og:description" content="2026 motion graphic work">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="detail reel">
+
+<a class="btn back" href="index.html" data-transition aria-label="홈으로 돌아가기">
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+       stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M19 12H5M11 18l-6-6 6-6"/>
+  </svg>
+  HOME
+</a>
+
+<button class="btn sound" type="button" id="sound" aria-pressed="false">SOUND ON</button>
+
+<video id="reel"
+       src="assets/video/reel.mp4"
+       poster="assets/img/poster-reel.jpg"
+       autoplay muted playsinline preload="auto"
+       disablepictureinpicture
+       aria-label="모션그래픽 릴"></video>
+
+<!-- 재생이 끝나면 첫 프레임으로 되감고 배경을 흐리게 한 뒤 올라온다 -->
+<div class="reel-end" id="reelEnd">
+  <button class="btn reel-btn" type="button" id="replay">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M3 12a9 9 0 1 0 2.6-6.4"/><path d="M3 4v5h5"/>
+    </svg>
+    REPLAY
+  </button>
+  <a class="btn reel-btn" href="index.html" data-transition id="toHome">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M3 10.5 12 3l9 7.5"/><path d="M5.5 9.5V21h13V9.5"/>
+    </svg>
+    BACK TO HOME
+  </a>
+</div>
+
+<div class="fade-layer"></div>
+<script src="assets/js/app.js"></script>
+</body>
+</html>

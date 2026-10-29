@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>BRANDING — 천우태 포트폴리오</title>
+<meta name="description" content="ORBY · 비동반 소아 서비스 플랫폼 브랜딩">
+<meta name="theme-color" content="#000000">
+<meta property="og:title" content="BRANDING — ORBY">
+<meta property="og:description" content="비동반 소아 서비스 플랫폼">
+<link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin>
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="detail paged">
+
+<!-- 인트로 스플래시 — 끝까지 재생되어야 본문이 열린다 -->
+<div id="gate">
+  <video src="assets/video/intro.mp4"
+         poster="assets/img/poster-intro.jpg"
+         muted playsinline preload="auto"
+         disablepictureinpicture></video>
+  <p class="gate-load">LOADING</p>
+  <button class="btn gate-skip" type="button" aria-label="인트로 건너뛰기">CLICK TO SKIP</button>
+  <button class="btn gate-play" type="button" aria-label="인트로 재생">PLAY</button>
+</div>
+
+<main id="content">
+  <a class="btn back" href="index.html" data-transition aria-label="홈으로 돌아가기">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M19 12H5M11 18l-6-6 6-6"/>
+    </svg>
+    HOME
+  </a>
+
+  <div class="book" id="book" aria-label="브랜딩 프로젝트">
+    <div class="track" id="track">
+      <div class="page"><img src="assets/img/b-01.webp" width="3840" height="2160" alt="ORBY 브랜딩 — 비동반 소아 서비스" decoding="async"></div>
+      <div class="page"><img src="assets/img/b-02.webp" width="3840" height="2160" alt="" decoding="async"></div>
+      <div class="page"><img src="assets/img/b-03.webp" width="3840" height="2160" alt="" decoding="async"></div>
+      <div class="page"><img src="assets/img/b-04.webp" width="3840" height="2160" alt="" decoding="async"></div>
+    </div>
+  </div>
+
+  <button class="btn nav nav--prev" type="button" aria-label="이전 장" disabled>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M15 18l-6-6 6-6"/>
+    </svg>
+  </button>
+  <button class="btn nav nav--next" type="button" aria-label="다음 장">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+         stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+      <path d="M9 18l6-6-6-6"/>
+    </svg>
+  </button>
+
+</main>
+
+<div class="fade-layer"></div>
+<script src="assets/js/app.js"></script>
+</body>
+</html>

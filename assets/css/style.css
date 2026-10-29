@@ -1,0 +1,611 @@
+/* ─────────────────────────────────────────────
+   천우태 포트폴리오
+   그리드: 1920×1080 / 마진 80 / 거터 20 / 5컬럼(336px)
+   ───────────────────────────────────────────── */
+
+@font-face {
+  font-family: 'Pretendard';
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  src: url('https://cdn.jsdelivr.net/npm/pretendard@1.3.9/dist/web/static/woff2/Pretendard-Bold.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+  src: url('https://cdn.jsdelivr.net/npm/pretendard@1.3.9/dist/web/static/woff2/Pretendard-Regular.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Pretendard';
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+  src: url('https://cdn.jsdelivr.net/npm/pretendard@1.3.9/dist/web/static/woff2/Pretendard-Light.woff2') format('woff2');
+}
+
+:root {
+  /* 페이지 기준 */
+  --page-w: 1920px;
+  --page-h: 1080px;
+
+  /* 세로 그리드 — 1920 − 80×2 = 1760, 거터 20×4 = 80, (1760−80)/5 = 336 */
+  --margin: 80px;
+  --gutter: 20px;
+  --cols: 5;
+  --col: 336px;
+
+  /* 색 */
+  --bg-home: #e7e7e7;
+  --bg-dark: #000;
+  --ink: #000;
+
+  /* 홈 타이포 — 가이드 실측에서 역산 (캡높이 69px) */
+  --title-size: 97.458px;
+  --title-lh: 1.19287;   /* sTypo (asc+desc)/upem → half-leading 0 */
+  --cap-offset: 23.75px; /* 요소 top에서 대문자 윗선까지 */
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+img, video { display: block; }
+
+/* ═══════════════════════════════════════════
+   홈 — 1920×1080 캔버스를 통째로 비율 유지 스케일
+   ═══════════════════════════════════════════ */
+
+body.home {
+  background: var(--bg-home);
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;   /* 홈은 스크롤 없음 */
+}
+
+#stage {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: var(--page-w);
+  height: var(--page-h);
+  transform-origin: center center;
+  transform: translate(-50%, -50%) scale(var(--scale, 1));
+  will-change: transform;
+}
+
+/* ── 탑바 (Works / Profile) — 가이드 실측: 100×40, y40, 우여백 80 ── */
+.topbar {
+  position: absolute;
+  top: 40px;
+  right: 80px;
+  display: flex;
+  gap: 15px;
+  z-index: 50;
+}
+
+.tab {
+  width: 100px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  box-sizing: border-box;
+  border: 1px solid var(--ink);
+  background: transparent;
+  color: var(--ink);
+
+  font-family: inherit;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1;
+  text-decoration: none;
+  white-space: nowrap;
+
+  transition: background .22s ease, color .22s ease;
+}
+
+.tab:hover { background: rgba(0, 0, 0, .08); }
+
+.tab.is-on {
+  background: #7a7a7a;
+  border-color: #7a7a7a;
+  color: #fff;
+}
+
+.tab:focus-visible { outline: 2px solid #000; outline-offset: 3px; }
+
+/* ── 프로필 화면 ── */
+.pf {
+  position: absolute;
+  inset: 0;
+}
+
+.pf__role,
+.pf__name,
+.pf__rome {
+  position: absolute;
+  margin: 0;
+  font-weight: 700;
+  line-height: 1.19287;
+  white-space: nowrap;
+}
+
+/* GRAPHIC DESIGNER — 가이드 잉크폭 458px에서 역산 */
+.pf__role { left: 81px;  top: 153.1px; font-size: 48.5px; color: #c3c3c3; }
+
+/* 천우태 — 가이드 잉크폭 161px에서 역산 */
+.pf__name { left: 81px;  top: 700.7px; font-size: 64px; color: var(--ink); }
+
+/* Cheon - Woo tae */
+.pf__rome { left: 81px;  top: 783.1px; font-size: 48.5px; color: #c3c3c3; }
+
+.pf__rule {
+  position: absolute;
+  left: 81px;
+  top: 860px;
+  width: 692px;
+  height: 2px;
+  background: #747474;
+}
+
+/* 학력 / TEL / MAIL */
+.pf__info {
+  position: absolute;
+  left: 81px;
+  top: 886.1px;
+  margin: 0;
+  color: #7a7a7a;
+  font-size: 24px;
+  font-weight: 400;
+  line-height: 1.19287;
+}
+
+.pf__info div {
+  display: flex;
+  gap: 0;
+  margin-bottom: 12.37px;   /* 행 간격 41px */
+}
+
+.pf__info dt { width: 115px; flex: none; margin: 0; }
+.pf__info dd { margin: 0; }
+
+.pf__photo {
+  position: absolute;
+  left: 1276px;
+  top: 154px;
+  width: 564px;
+  height: 846px;
+  object-fit: cover;
+  max-width: none;
+  max-height: none;
+}
+
+/* 항목 하나 = 아이콘 + 타이틀을 묶은 링크.
+   스테이지 전체를 덮어 자식들의 left/right 기준 박스가 되게 하고,
+   대신 자신은 클릭을 받지 않는다(세 항목이 겹치므로). 실제 히트 영역은 자식들. */
+.item {
+  position: absolute;
+  inset: 0;
+  display: block;
+  text-decoration: none;
+  color: var(--ink);
+  outline: none;
+  pointer-events: none;
+}
+
+.item__icon,
+.item__title { pointer-events: auto; }
+
+.item__icon {
+  position: absolute;
+  /* .item은 폭이 없는 absolute 박스라, 호스트가 심는 img{max-width:100%} 같은
+     리셋을 만나면 아이콘이 0폭으로 찌그러진다. 명시적으로 풀어준다. */
+  max-width: none;
+  max-height: none;
+  transition: transform .45s cubic-bezier(.22, .61, .36, 1);
+  transform-origin: center center;
+}
+
+.item__title {
+  position: absolute;
+  margin: 0;
+  font-weight: 700;
+  font-size: var(--title-size);
+  line-height: var(--title-lh);
+  white-space: nowrap;
+  transition: transform .45s cubic-bezier(.22, .61, .36, 1);
+  transform-origin: left center;
+}
+
+/* 호버하면 타이틀 밑에서 쑤욱 밀려나오는 부제.
+   바깥 상자가 잘라내고, 안쪽 글자가 위에서 내려온다. 타이틀 우단에 맞춰 오른끝 정렬.
+   크기 26px은 가이드 스크린샷의 부제 폭(334px)에서 역산했다. */
+.item__sub {
+  position: absolute;
+  overflow: hidden;
+  height: 32px;
+  white-space: nowrap;
+  pointer-events: none;
+  /* 호버 시 타이틀이 밀리는 만큼 부제도 같이 따라가 우단 정렬이 유지된다 */
+  transition: transform .45s cubic-bezier(.22, .61, .36, 1);
+}
+.item.is-active .item__sub { transform: translateX(10px); }
+
+.item__sub-in {
+  display: block;
+  font-weight: 300;
+  font-size: 26px;
+  line-height: 1.19287;
+  color: var(--ink);
+  transform: translateY(-115%);
+  opacity: 0;
+  transition: transform .52s cubic-bezier(.22, .61, .36, 1), opacity .34s ease;
+}
+
+.item.is-active .item__sub-in {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* ── 가이드 실측 좌표 (1920×1080 기준) ─────────── */
+
+/* left/top은 가이드 실측 좌표에서 글리프 좌측여백(6px)과
+   캡 윗선 오프셋(23px)을 뺀 값 — 브라우저 렌더 실측으로 보정했다. */
+
+/* BRANDING */
+#item-branding .item__icon  { left: 525px; top: 121px; width: 271px; height: 271px; }
+#item-branding .item__title { left: 711px; top: 285px; letter-spacing: -0.143px; }
+#item-branding .item__sub   { left: 716px;  top: 388.6px; }   /* 좌측 정렬 */
+
+/* PACKAGE */
+#item-package .item__icon   { left: 1236px; top: 388px; width: 245px; height: 388px; }
+#item-package .item__title  { left: 733px;  top: 548px; letter-spacing: 0.5px; }
+#item-package .item__sub    { right: 735.5px; top: 651.6px; } /* 우측 정렬 */
+
+/* MOTION GRAPHIC */
+#item-motion .item__icon    { left: 275px; top: 639px; width: 267px; height: 386px; }
+#item-motion .item__title   { left: 552px; top: 812px; letter-spacing: -1px; }
+#item-motion .item__sub     { left: 557px;  top: 915.6px; }   /* 좌측 정렬 */
+
+/* ── 인터랙션 ──────────────────────────────── */
+
+#stage .item { transition: opacity .45s ease; }
+
+/* 하나에 호버하면 나머지는 살짝 물러난다 */
+#stage.is-hovering .item { opacity: .34; }
+#stage.is-hovering .item.is-active { opacity: 1; }
+
+.item.is-active .item__icon  { transform: translateY(-8px) scale(1.045); }
+.item.is-active .item__title { transform: translateX(10px); }
+
+.item:focus-visible {
+  outline: 3px solid #0a0a0a;
+  outline-offset: 10px;
+  border-radius: 4px;
+}
+
+/* ═══════════════════════════════════════════
+   페이지 전환 — 들어올 때 페이드 인, 나갈 때 페이드 아웃
+   ═══════════════════════════════════════════ */
+
+.fade-layer {
+  position: fixed;
+  inset: 0;
+  background: var(--bg-home);
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity .5s ease;
+  z-index: 9000;
+}
+.fade-layer.is-clear { opacity: 0; }
+.fade-layer.is-out   { opacity: 1; pointer-events: all; }
+
+body.detail .fade-layer { background: #000; }
+
+/* ═══════════════════════════════════════════
+   상세페이지 공통
+   ═══════════════════════════════════════════ */
+
+body.detail {
+  background: var(--bg-dark);
+}
+
+.sheet {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.sheet img {
+  width: 100%;
+  height: auto;
+  vertical-align: top;
+}
+
+/* ── 오버레이 공통 버튼 — 홈 탭(.tab)과 같은 규격: 100×40, 1px 테두리, 각진 모서리, 24px ── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: calc(10px * var(--ui, 1));
+
+  box-sizing: border-box;
+  min-width: calc(100px * var(--ui, 1));
+  height: calc(40px * var(--ui, 1));
+  padding: 0 calc(14px * var(--ui, 1));
+
+  border: 1px solid #fff;
+  border-radius: 0;
+  background: rgba(0, 0, 0, .42);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+
+  color: #fff;
+  font-family: inherit;
+  font-size: calc(24px * var(--ui, 1));
+  font-weight: 400;
+  line-height: 1;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+
+  transition: background .22s ease, color .22s ease, opacity .25s ease;
+}
+
+.btn:hover { background: #fff; color: #000; }
+.btn:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+.btn svg { width: calc(18px * var(--ui, 1)); height: calc(18px * var(--ui, 1)); flex: none; }
+
+/* 우상단 백버튼 — 홈 탭과 같은 자리(top 40 / right 80) */
+.back {
+  position: fixed;
+  top: calc(40px * var(--ui, 1));
+  right: calc(80px * var(--ui, 1));
+  z-index: 8000;
+}
+
+
+/* ═══════════════════════════════════════════
+   인트로 게이트 (상세 1)
+   ═══════════════════════════════════════════ */
+
+body.is-gated { overflow: hidden; }
+
+#gate {
+  position: fixed;
+  inset: 0;
+  z-index: 9500;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity .6s ease;
+}
+#gate.is-done { opacity: 0; pointer-events: none; }
+
+#gate video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;   /* 2497×1775(1.407:1) — 잘리지 않게 */
+  background: #000;
+}
+
+/* 로딩 표시 */
+.gate-load {
+  position: absolute;
+  bottom: 44px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: rgba(255, 255, 255, .62);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .22em;
+  transition: opacity .3s ease;
+}
+.gate-load.is-hidden { opacity: 0; }
+
+/* 중앙 하단 스킵 버튼 — 재생이 시작되면 나타난다 */
+.gate-skip {
+  position: absolute;
+  left: 50%;
+  bottom: calc(40px * var(--ui, 1));
+  transform: translateX(-50%);
+  z-index: 2;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.gate-skip.is-shown { opacity: 1; pointer-events: auto; }
+
+
+/* 자동재생이 막혔을 때만 노출되는 재생 버튼 */
+.gate-play {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  display: none;
+}
+.gate-play.is-shown { display: inline-flex; }
+
+
+/* 인트로가 끝나기 전까지 본문은 숨긴다 */
+#content { opacity: 0; transition: opacity .7s ease .15s; }
+#content.is-revealed { opacity: 1; }
+
+/* ═══════════════════════════════════════════
+   가로 페이지 넘김 — 책처럼 (상세 1)
+   ═══════════════════════════════════════════ */
+
+body.paged {
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+}
+
+.book {
+  position: fixed;
+  inset: 0;
+  background: #000;
+  overflow: hidden;
+  touch-action: pan-y;
+}
+
+/* 여섯 장을 가로로 이어 붙이고 트랙을 통째로 민다 */
+.track {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  transform: translate3d(0, 0, 0);
+  transition: transform .62s cubic-bezier(.38, .02, .2, 1);
+  will-change: transform;
+}
+
+.page {
+  flex: 0 0 100%;
+  width: 100%;
+  height: 100%;
+  background: #000;
+}
+
+.page img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  /* 호스트 리셋(img{max-width:100%}) 방어 */
+  max-width: none;
+  max-height: none;
+}
+
+/* ── 한 지면 안에서 여러 컷이 크로스 디졸브로 도는 구간 ──
+   겹쳐 쌓아두고 들어오는 컷만 위에서 서서히 불투명해진다.
+   나가는 컷은 끝까지 불투명한 채로 밑에 깔려 있으므로
+   디졸브 도중에 배경이 비쳐 어두워지는 일이 없다. */
+.page.seq { position: relative; }
+
+.page.seq img {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity .9s linear;
+}
+
+.page.seq img:first-child { opacity: 1; }
+
+/* 자리를 옮기는 동안에는 전환을 끈다 (첫 컷으로 되돌릴 때) */
+.page.seq.is-cut img { transition: none; }
+
+/* ── 좌우 넘김 버튼 — 정사각 40×40 ── */
+.nav {
+  position: fixed;
+  top: 50%;
+  margin-top: calc(-20px * var(--ui, 1));
+  z-index: 8100;
+  min-width: calc(40px * var(--ui, 1));
+  width: calc(40px * var(--ui, 1));
+  padding: 0;
+}
+.nav--prev { left: calc(30px * var(--ui, 1)); }
+.nav--next { right: calc(30px * var(--ui, 1)); }
+.nav:disabled { opacity: .22; cursor: default; }
+.nav:disabled:hover { background: rgba(0, 0, 0, .42); color: #fff; }
+
+
+
+/* 좁은 화면 */
+
+
+/* 작품 이미지를 가리지 않도록, 가만히 두면 화살표가 물러난다.
+   마우스를 움직이거나 키를 누르면 다시 올라온다. (BACK은 탈출구라 항상 둔다) */
+body.is-idle .nav {
+  opacity: 0;
+  pointer-events: none;
+}
+body.is-idle .nav:hover {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ═══════════════════════════════════════════
+   릴 페이지 (상세 3)
+   ═══════════════════════════════════════════ */
+
+body.reel {
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  background: #000;
+}
+
+#reel {
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  object-fit: contain;
+  background: #000;
+  transition: filter .6s ease, transform .6s ease;
+}
+
+/* 재생이 끝나면 첫 프레임이 흐려진 배경이 된다
+   (살짝 확대해 블러로 생기는 가장자리 번짐을 화면 밖으로 밀어낸다) */
+body.is-ended #reel {
+  filter: blur(18px);
+  transform: scale(1.07);
+}
+
+.reel-end {
+  position: fixed;
+  inset: 0;
+  z-index: 8200;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: calc(14px * var(--ui, 1));
+
+  background: rgba(0, 0, 0, .34);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .5s ease;
+}
+.reel-end.is-shown { opacity: 1; pointer-events: auto; }
+
+.reel-btn { /* .btn 과 동일 규격 */ }
+
+/* 사운드 토글 — 하단 중앙 */
+.sound {
+  position: fixed;
+  left: 50%;
+  bottom: calc(40px * var(--ui, 1));
+  transform: translateX(-50%);
+  z-index: 8100;
+}
+
+
+/* ═══════════════════════════════════════════
+   모션 최소화 설정 존중
+   ═══════════════════════════════════════════ */
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
+  .item.is-active .item__icon,
+  .item.is-active .item__title { transform: none; }
+}
+
+/* 좁은 화면 — 백버튼만 살짝 줄인다 */
+
