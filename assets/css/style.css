@@ -44,9 +44,9 @@
   --ink: #000;
 
   /* 홈 타이포 — 가이드 실측에서 역산 (캡높이 69px) */
-  --title-size: 97.458px;
+  --title-size: 84.67px;
   --title-lh: 1.19287;   /* sTypo (asc+desc)/upem → half-leading 0 */
-  --cap-offset: 23.75px; /* 요소 top에서 대문자 윗선까지 */
+  --cap-offset: 20.63px; /* 요소 top에서 대문자 윗선까지 */
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -264,19 +264,23 @@ body.home {
    캡 윗선 오프셋(23px)을 뺀 값 — 브라우저 렌더 실측으로 보정했다. */
 
 /* BRANDING */
-#item-branding .item__icon  { left: 525px; top: 121px; width: 271px; height: 271px; }
-#item-branding .item__title { left: 711px; top: 285px; letter-spacing: -0.143px; }
-#item-branding .item__sub   { left: 716px;  top: 388.6px; }   /* 좌측 정렬 */
+#item-branding .item__icon  { left: 579.5px; top: 44px; width: 230px; height: 230px; }
+#item-branding .item__title { left: 743.8px; top: 185.9px; letter-spacing: -0.267px; }
+#item-branding .item__sub   { left: 748.8px; top: 276.6px; }   /* 좌측 정렬 */
 
 /* PACKAGE */
-#item-package .item__icon   { left: 1236px; top: 388px; width: 245px; height: 388px; }
-#item-package .item__title  { left: 733px;  top: 548px; letter-spacing: 0.5px; }
-#item-package .item__sub    { right: 735.5px; top: 651.6px; } /* 우측 정렬 */
+#item-package .item__icon   { left: 1229.1px; top: 283px; width: 199.9px; height: 310px; }
+#item-package .item__title  { left: 762.8px; top: 413.9px; letter-spacing: 0.434px; }
+#item-package .item__sub    { right: 764.5px; top: 504.6px; } /* 우측 정렬 */
 
 /* MOTION GRAPHIC */
-#item-motion .item__icon    { left: 275px; top: 639px; width: 267px; height: 386px; }
-#item-motion .item__title   { left: 552px; top: 812px; letter-spacing: -1px; }
-#item-motion .item__sub     { left: 557px;  top: 915.6px; }   /* 좌측 정렬 */
+#item-motion .item__icon    { left: 336.1px; top: 497px; width: 221.8px; height: 326px; }
+#item-motion .item__title   { left: 594.2px; top: 643.9px; letter-spacing: -0.023px; }
+#item-motion .item__sub     { left: 599.2px; top: 734.6px; }   /* 좌측 정렬 */
+
+#item-planning .item__icon  { left: 1218.5px; top: 831px; width: 186px; height: 170px; }
+#item-planning .item__title { left: 762.8px; top: 871.9px; letter-spacing: -0.43px; }
+#item-planning .item__sub   { left: 767.8px; top: 963.6px; }   /* 좌측 정렬 */
 
 /* ── 인터랙션 ──────────────────────────────── */
 
