@@ -281,7 +281,7 @@ body.home {
 #item-planning .item__icon  { left: 1237.1px; top: 848px; width: 148.8px; height: 136px;
                               transform: rotate(10deg); }
 #item-planning .item__title { left: 762.8px; top: 871.9px; letter-spacing: -0.43px; }
-#item-planning .item__sub   { left: 767.8px; top: 963.6px; }   /* 좌측 정렬 */
+#item-planning .item__sub   { right: 734.5px; top: 963.6px; } /* 우측 정렬 */
 
 /* ── 인터랙션 ──────────────────────────────── */
 
